@@ -9,5 +9,3 @@ Usage:
 GachaDestroyer --DELETE --BLOCK  
 --DELETE to delete the games from their default directories, quite dumb and the games can be easily reinstalled if they are deleted  
 --BLOCK to block some related domains using the hosts file, which should prevent updates or the use of the launcher  
-
-Or run one of the example batch files  
