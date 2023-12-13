@@ -88,7 +88,11 @@ namespace GachaDestroyer
                 if (Directory.Exists(GenshinDir))
                 {
                     Console.WriteLine("Genshin Impact Detected");
-                    if (actuallyDeleteFiles) { Directory.Delete(GenshinDir, true); }
+                    try
+                    {
+                        if (actuallyDeleteFiles) { Directory.Delete(GenshinDir, true); }
+                    }
+                    catch { }
 
                     if (dateTime.Contains("8/28/"))
                     {
@@ -107,7 +111,10 @@ namespace GachaDestroyer
                 if (Directory.Exists(StarRailDir))
                 {
                     Console.WriteLine("Star Rail Detected");
-                    if (actuallyDeleteFiles) { Directory.Delete(StarRailDir, true); }
+                    try
+                    {
+                        if (actuallyDeleteFiles) { Directory.Delete(StarRailDir, true); }
+                    } catch { }
 
                     if (dateTime.Contains("4/25/") | dateTime.Contains("3/07/"))
                     {
@@ -126,7 +133,10 @@ namespace GachaDestroyer
                 if (Directory.Exists(Honkai3DirEpic))
                 {
                     Console.WriteLine("Honkai 3 Detected on Epic Games");
-                    if (actuallyDeleteFiles) { Directory.Delete(Honkai3DirEpic, true); }
+                    try
+                    {
+                        if (actuallyDeleteFiles) { Directory.Delete(Honkai3DirEpic, true); }
+                    } catch { }
                 }
                 else
                 {
@@ -136,7 +146,10 @@ namespace GachaDestroyer
                 if (Directory.Exists(Honkai3DirSteam))
                 {
                     Console.WriteLine("Honkai 3 Detected on Steam");
-                    if (actuallyDeleteFiles) { Directory.Delete(Honkai3DirSteam, true); }
+                    try
+                    {
+                        if (actuallyDeleteFiles) { Directory.Delete(Honkai3DirSteam, true); }
+                    } catch { }
                 }
                 else
                 {
