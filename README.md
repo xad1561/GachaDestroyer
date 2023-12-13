@@ -1,4 +1,3 @@
-#GachaDestroyer
 A trojan that deletes some gacha games and blocks their related domains, preventing them from being played
 Must be run with admin privileges to block domains
 
