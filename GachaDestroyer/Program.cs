@@ -48,7 +48,7 @@ namespace GachaDestroyer
                 "mihoyo.com"
             };
 
-            //Check if the --DELETE/--BLOCK argument is given before deleting the files/blocking domains; Idiot Proofing
+            //Check if the --DELETE/--BLOCK argument is given before deleting the files/blocking domains; Idiot Proofing. I sure hope there isn't a file type that lets you write a script, to execute stuff in a batch perhaps, where the arguments could be passed into it from there.
             for (int i = 0; i < args.Length; i++)
             {
                 //Console.WriteLine(args[i]);
@@ -88,7 +88,7 @@ namespace GachaDestroyer
                 if (Directory.Exists(GenshinDir))
                 {
                     Console.WriteLine("Genshin Impact Detected");
-                    if (actuallyDeleteFiles) { Directory.Delete(GenshinDir); }
+                    if (actuallyDeleteFiles) { Directory.Delete(GenshinDir, true); }
 
                     if (dateTime.Contains("8/28/"))
                     {
@@ -107,7 +107,7 @@ namespace GachaDestroyer
                 if (Directory.Exists(StarRailDir))
                 {
                     Console.WriteLine("Star Rail Detected");
-                    if (actuallyDeleteFiles) { Directory.Delete(StarRailDir); }
+                    if (actuallyDeleteFiles) { Directory.Delete(StarRailDir, true); }
 
                     if (dateTime.Contains("4/25/") | dateTime.Contains("3/07/"))
                     {
@@ -126,7 +126,7 @@ namespace GachaDestroyer
                 if (Directory.Exists(Honkai3DirEpic))
                 {
                     Console.WriteLine("Honkai 3 Detected on Epic Games");
-                    if (actuallyDeleteFiles) { Directory.Delete(Honkai3DirEpic); }
+                    if (actuallyDeleteFiles) { Directory.Delete(Honkai3DirEpic, true); }
                 }
                 else
                 {
@@ -135,8 +135,8 @@ namespace GachaDestroyer
 
                 if (Directory.Exists(Honkai3DirSteam))
                 {
-                    Console.WriteLine("Honkai 3 Detected on Epic Games");
-                    if (actuallyDeleteFiles) { Directory.Delete(Honkai3DirSteam); }
+                    Console.WriteLine("Honkai 3 Detected on Steam");
+                    if (actuallyDeleteFiles) { Directory.Delete(Honkai3DirSteam, true); }
                 }
                 else
                 {
