@@ -26,7 +26,7 @@ namespace GachaDestroyer
             bool blockDomains = false;
 
             //Default Directory Paths, change these as necessary
-            //Unrelated but the process of finding these felt heretical to me
+            //Unrelated but the process of finding these felt heretical to me, despite it seeming obvious
             string GenshinDirEpic = @"C:\Program Files\Epic Games\GenshinImpact";
             string GenshinDir = @"C:\Program Files\Genshin Impact";
             string StarRailDirEpic = @"C:\Program Files\Epic Games\HonkaiStarRail";
