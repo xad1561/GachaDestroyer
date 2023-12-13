@@ -2,7 +2,8 @@ A trojan that deletes some gacha games (Genshin Impact, Honkai Star Rail, Honkai
 Must be run with admin privileges to block domains  
 Might help with someone's gambling addiction. Maybe.  
 
-Running the program without arguments does nothing useful besides listing whether or not the targeted games are installed  
+The program must be run from a command prompt or a batch file  
+Running the program without arguments does nothing useful besides listing whether or not the targeted games are installed at their default directories  
 
 Usage:  
 
