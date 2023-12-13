@@ -10,3 +10,7 @@ Usage:
 GachaDestroyer --DELETE --BLOCK  
 --DELETE to delete the games from their default directories, quite dumb and the games can be easily reinstalled if they are deleted  
 --BLOCK to block some related domains using the hosts file, which should prevent updates or the use of the launcher  
+
+FAQ:  
+Q: Why did you make this?  
+A: I had spare time and was bored. Also I hate gacha games.  
