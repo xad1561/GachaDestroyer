@@ -1,4 +1,4 @@
-A trojan that deletes some gacha games (Genshin Impact, Honkai Star Rail, Honkai 3rd) and blocks their related domains, preventing them from being played  
+A trojan that deletes some gacha games (Genshin Impact, Honkai Star Rail, Honkai 3rd) and blocks their related domains, preventing them from being played or downloaded again if deleted  
 Must be run with admin privileges to block domains  
 Might help with someone's gambling addiction. Maybe.  
 
