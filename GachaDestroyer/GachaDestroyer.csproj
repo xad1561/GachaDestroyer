@@ -23,7 +23,5 @@
 	<PropertyGroup>
 		<PublishSingleFile>true</PublishSingleFile>
 	</PropertyGroup>
-
-
-
+	
 </Project>
