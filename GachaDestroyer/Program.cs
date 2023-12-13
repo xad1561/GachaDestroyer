@@ -2,7 +2,7 @@
 //Currently only targets Genshin Impact, Honkai Star Rail, and Honkai Impact 3rd, which is only the tip of the iceberg
 //Still working on the "claims to be a set of tools" part
 
-//Spaghetti code prepared by xad1561
+//Spaghetti code written by xad1561
 
 /*
  * TODO:
@@ -26,7 +26,6 @@ namespace GachaDestroyer
             bool blockDomains = false;
 
             //Default Directory Paths, change these as necessary
-            //Unrelated but the process of finding these felt heretical to me, despite it seeming obvious
             string GenshinDirEpic = @"C:\Program Files\Epic Games\GenshinImpact";
             string GenshinDir = @"C:\Program Files\Genshin Impact";
             string StarRailDirEpic = @"C:\Program Files\Epic Games\HonkaiStarRail";
@@ -35,7 +34,8 @@ namespace GachaDestroyer
             string Honkai3DirEpic = @"C:\Program Files\Epic Games\HonkaiImpact3rd";
             string Honkai3Dir = @"C:\Program Files\Honkai Impact 3rd";
 
-            //The strings of the domains to block. 
+            //The strings of the domains to block. If anybody has information on more related domains, please message me or let me know somehow so I can add them
+            //Currently this only contains domains I found by capturing DNS packets with Wireshark and some I found through the absurd method of "looking up the official website for the games"
             string[] domainsToBlock =
             {
                 "genshin.hoyoverse.com",
@@ -64,16 +64,17 @@ namespace GachaDestroyer
             //Check if the --DELETE/--BLOCK argument is given before deleting the files/blocking domains; Idiot Proofing. I sure hope there isn't a file type that lets you write a script, to execute stuff in a batch perhaps, where the arguments could be passed into it from there.
             for (int i = 0; i < args.Length; i++)
             {
-                //Console.WriteLine(args[i]);
                 if (args[i] == "--DELETE")
                 {
                     actuallyDeleteFiles = true;
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("Deleting Files");
                 }
 
                 if (args[i] == "--BLOCK")
                 {
                     blockDomains = true;
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("Blocking Domains");
                 }
             }
@@ -167,7 +168,7 @@ namespace GachaDestroyer
                 }
             }
 
-            //Repurcussion, for deleting Honkai 3. The reason it is named that is because it is apparently similar in meaning to impact according to the thesaurus. 
+            //Repurcussion, for deleting Honkai 3.
             void Repurcussion()
             {
                 //Epic Games
