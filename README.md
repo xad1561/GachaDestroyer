@@ -17,3 +17,6 @@ GachaDestroyer --DELETE --BLOCK
 FAQ:  
 Q: Why did you make this?  
 A: I had spare time and was bored. Also I hate gacha games.  
+
+Q: Why is the code so horrible?  
+A:   
