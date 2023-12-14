@@ -56,6 +56,11 @@ namespace GachaDestroyer
                 "hsr.hoyoverse.com",
                 "honkaiimpact3.mihoyo.com",
                 "hoyolab.com",
+                "api-account-os.hoyoverse.com",
+                "hk4e-sdk-os.hoyoverse.com",
+                "osusadispatch.yuanshen.com",
+                "overseauspider.yuanshen.com",
+                "yuanshen.com",
                 "zenless.hoyoverse.com" //Future Proofing
             };
 
