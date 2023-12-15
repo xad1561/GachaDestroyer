@@ -11,8 +11,8 @@ Usage:
 GachaDestroyer --DELETE --BLOCK  
 ```
 
---DELETE to delete the games from their default directories, quite dumb and the games can be easily reinstalled if they are deleted  
---BLOCK to block some related domains using the hosts file, which should prevent updates or the use of the launcher, but requires it to be run as admin  
+--DELETE to delete the games from their default directories, quite dumb and the games can be easily reinstalled if they are deleted.  
+--BLOCK to block some related domains using the hosts file, which should prevent updates or the use of the launcher, but requires it to be run as admin. Since Genshin/Honkai already need admin access to be played in the first place, this isn't too much of an issue.  
 
 FAQ:  
 Q: Why did you make this?  
